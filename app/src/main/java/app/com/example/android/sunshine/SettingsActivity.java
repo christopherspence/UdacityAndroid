@@ -18,7 +18,7 @@ import android.view.KeyEvent;
  * href="http://developer.android.com/guide/topics/ui/settings.html">Settings
  * API Guide</a> for more information on developing a Settings UI.
  */
-public class SettingsActivity extends ActionBarActivity
+public class SettingsActivity extends PreferenceActivity
         implements Preference.OnPreferenceChangeListener {
 
     @Override
@@ -30,8 +30,11 @@ public class SettingsActivity extends ActionBarActivity
         // For all preferences, attach an OnPreferenceChangeListener so the UI summary can be
         // updated when the preference changes.
         // TODO: Add preferences
-//Now action bar can be configured as per the need
+        addPreferencesFromResource(R.xml.pref_general);
 
+        bindPreferenceSummaryToValue(findPreference(getString(R.string.pref_location_key)));
+        bindPreferenceSummaryToValue(findPreference(getString(R.string.pref_units_key)));
+        //Now action bar can be configured as per the need
     }
 
     /**
